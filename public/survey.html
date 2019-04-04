@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Star Wars - Express</title>
+    <title>Friend Finder Survey</title>
     <!-- Latest compiled and minified CSS & JS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -16,11 +16,10 @@
 
     <div class="container">
         <div class="jumbotron">
-            <h1>Star Wars Express</h1>
-            <h3>The greatest resource in the galaxy for Star Wars statistics!</h3>
+            <h1>Friend Finder</h1>
+            <h3>The greatest resource in town for finding friends!</h3>
             <hr>
-            <a href="/"><button class="btn btn-danger btn-lg"><span class="fa fa-eye"></span> View
-                    Characters</button></a>
+            <a href="/"><button class="btn btn-danger btn-lg"><span class="fa fa-eye"></span> View Friends</button></a>
         </div>
         <div class="row">
 
@@ -28,7 +27,7 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <h3><strong>Add Characters</strong></h3>
+                        <h3><strong>Add Friends</strong></h3>
                     </div>
                     <div class="card-body">
                         <form method="POST" role="form">
@@ -39,25 +38,20 @@
                             </div>
 
                             <div class="form-group">
-                                <label for="role">Role</label>
-                                <input type="text" class="form-control" id="role">
+                                <label for="role">Photo</label>
+                                <input type="image" class="form-control" id="photo">
                             </div>
 
                             <div class="form-group">
-                                <label for="age">Age</label>
-                                <input type="text" class="form-control" id="age">
-                            </div>
-
-                            <div class="form-group">
-                                <label for="force-points">Force Points</label>
-                                <input type="text" class="form-control" id="force-points">
+                                <label for="age">Scores</label>
+                                <input type="text" class="form-control" id="scores">
                             </div>
 
                         </form>
                         <br>
                         <div class="text-right">
                             <button type="submit" class="btn btn-primary btn-md" id="add-btn"><span
-                                    class="fa fa-fire"></span> Add to the Force</button>
+                                    class="fa fa-fire"></span> Add to the Friends List</button>
                         </div>
                     </div>
                 </div>
@@ -70,24 +64,23 @@
         // Question: What does this code do?
         $("#add-btn").on("click", function (event) {
             event.preventDefault();
-            var newCharacter = {
+            var newFriend = {
                 name: $("#name").val().trim(),
-                role: $("#role").val().trim(),
-                age: $("#age").val().trim(),
-                forcePoints: $("#force-points").val().trim()
+                photo: $("#photo").val().trim(),
+                scores: $("#scores").val().trim(),
             };
 
             // $.ajax({
             //   method: "POST",
-            //   url: '/api/characters',
-            //   data: newCharacter
+            //   url: '/api/friends',
+            //   data: newFriend
             // })
 
             // Question: What does this code do??
-            $.post("/api/characters", newCharacter)
+            $.post("/api/friends", newFriend)
                 .then(function (data) {
                     console.log("add.html", data);
-                    alert("Adding character...");
+                    alert("Adding friend...");
                 });
         });
     </script>
