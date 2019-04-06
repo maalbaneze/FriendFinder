@@ -17,5 +17,8 @@
   "bugs": {
     "url": "https://github.com/maalbaneze/FriendFinder/issues"
   },
-  "homepage": "https://github.com/maalbaneze/FriendFinder#readme"
+  "homepage": "https://github.com/maalbaneze/FriendFinder#readme",
+  "dependencies": {
+    "express": "^4.16.4"
+  }
 }

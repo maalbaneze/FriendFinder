@@ -17,9 +17,9 @@
     <div class="container">
         <div class="jumbotron">
             <h1>Friend Finder</h1>
-            <h3>The greatest resource in town for finding friends!</h3>
+            <h3>Survey Questions</h3>
             <hr>
-            <a href="/"><button class="btn btn-danger btn-lg"><span class="fa fa-eye"></span> View Friends</button></a>
+            <a href="/"><button class="btn btn-info btn-lg"><span class="fa fa-eye"></span> View Friends</button></a>
         </div>
         <div class="row">
 
@@ -27,86 +27,81 @@
 
                 <div class="card">
                     <div class="card-header">
-                        <h3><strong>Add Friends</strong></h3>
+                        <h3><strong>About You</strong></h3>
                     </div>
                     <div class="card-body">
                         <form method="POST" role="form">
 
                             <div class="form-group">
-                                <label for="name">Name</label>
+                                <label for="name">Your Name (Required)</label>
                                 <input type="text" class="form-control" id="name">
                             </div>
 
                             <div class="form-group">
-                                <label for="role">Photo</label>
+                                <label for="role">Link to Your Photo (Required)</label>
                                 <input type="image" class="form-control" id="photo">
                             </div>
 
                             <div class="form-group">
-                                <label for="age">Scores</label>
+                                <!--<label for="age">Scores</label>
                                 <input type="text" class="form-control" id="scores">
-                                <br>
-                                <h3><strong>Take a Survey to help find friends!</strong></h3>
+                                <br>-->
+                                <h3><strong>Take this quick survey to help you find friends!</strong></h3>
                                 <h4>All answers are on a scale from 1 on the left of the slider (strongly disagree) to 5
                                     on the right of the slider (strongly agree). In the center, a 3 rating means you are
                                     neutral or ambivalent to the topic.</h4>
                                 <br>
-                                <h4><strong>Question 1</strong></h4>
-                                <h5>Your preferred pet is a dog.</h5>
-                                <!--<select data-placeholder="" class="chosen-select" id="q1">
-                                    <option value="1"></option>
-                                    <option value="1">1 (Strongly Disagree)</option>
-                                    <option value="2">2</option>
-                                    <option value="3">3</option>
-                                    <option value="4">4</option>
-                                    <option value="5">5 (Strongly Agree)</option>
-                                </select>-->
-                                <input type="range" min="1" max="5" value="" class="slider" id="myRange1">
-                                <br>
-                                <h4><strong>Question 2</strong></h4>
-                                <h5>Your preferred pet is a cat.</h5>
-                                <input type="range" min="1" max="5" value="" class="slider" id="myRange2">
-                                <br>
-                                <h4><strong>Question 3</strong></h4>
-                                <h5>Your preferred pet is a reptile.</h5>
-                                <input type="range" min="1" max="5" value="" class="slider" id="myRange3">
-                                <br>
-                                <h4><strong>Question 4</strong></h4>
-                                <h5>Your preferred pet is a freshwater aquarium.</h5>
-                                <input type="range" min="1" max="5" value="" class="slider" id="myRange4">
-                                <br>
-                                <h4><strong>Question 5</strong></h4>
-                                <h5>Your preferred pet is a saltwater aquarium.</h5>
-                                <input type="range" min="1" max="5" value="" class="slider" id="myRange5">
-                                <br>
-                                <h4><strong>Question 6</strong></h4>
-                                <h5>You like playing sports and/or outdoor physical activities.</h5>
-                                <input type="range" min="1" max="5" value="" class="slider" id="myRange6">
-                                <br>
-                                <h4><strong>Question 7</strong></h4>
-                                <h5>You like watching sports.</h5>
-                                <input type="range" min="1" max="5" value="" class="slider" id="myRange7">
-                                <br>
-                                <h4><strong>Question 8</strong></h4>
-                                <h5>You like card games.</h5>
-                                <input type="range" min="1" max="5" value="" class="slider" id="myRange8">
-                                <br>
-                                <h4><strong>Question 9</strong></h4>
-                                <h5>You like going to the movies at a theater.</h5>
-                                <input type="range" min="1" max="5" value="" class="slider" id="myRange9">
-                                <br>
-                                <h4><strong>Question 10</strong></h4>
-                                <h5>You like watching movies at home.</h5>
-                                <input type="range" min="1" max="5" value="" class="slider" id="myRange10">
+                                <form action="" id="grabIt">
+
+                                    <h4><strong>Question 1</strong></h4>
+                                    <h5>Your preferred pet is a dog.</h5>
+                                    <input type="range" min="1" max="5" value="" class="slider myRange" id="myRange1">
+                                    <br>
+                                    <h4><strong>Question 2</strong></h4>
+                                    <h5>Your preferred pet is a cat.</h5>
+                                    <input type="range" min="1" max="5" value="" class="slider myRange" id="myRange2">
+                                    <br>
+                                    <h4><strong>Question 3</strong></h4>
+                                    <h5>Your preferred pet is a reptile.</h5>
+                                    <input type="range" min="1" max="5" value="" class="slider myRange" id="myRange3">
+                                    <br>
+                                    <h4><strong>Question 4</strong></h4>
+                                    <h5>Your preferred pet is a freshwater aquarium.</h5>
+                                    <input type="range" min="1" max="5" value="" class="slider myRange" id="myRange4">
+                                    <br>
+                                    <h4><strong>Question 5</strong></h4>
+                                    <h5>Your preferred pet is a saltwater aquarium.</h5>
+                                    <input type="range" min="1" max="5" value="" class="slider myRange" id="myRange5">
+                                    <br>
+                                    <h4><strong>Question 6</strong></h4>
+                                    <h5>You like playing sports and/or outdoor physical activities.</h5>
+                                    <input type="range" min="1" max="5" value="" class="slider myRange" id="myRange6">
+                                    <br>
+                                    <h4><strong>Question 7</strong></h4>
+                                    <h5>You like watching sports.</h5>
+                                    <input type="range" min="1" max="5" value="" class="slider myRange" id="myRange7">
+                                    <br>
+                                    <h4><strong>Question 8</strong></h4>
+                                    <h5>You like card games.</h5>
+                                    <input type="range" min="1" max="5" value="" class="slider myRange" id="myRange8">
+                                    <br>
+                                    <h4><strong>Question 9</strong></h4>
+                                    <h5>You like going to the movies at a theater.</h5>
+                                    <input type="range" min="1" max="5" value="" class="slider myRange" id="myRange9">
+                                    <br>
+                                    <h4><strong>Question 10</strong></h4>
+                                    <h5>You like watching movies at home.</h5>
+                                    <input type="range" min="1" max="5" value="" class="slider myRange" id="myRange10">
+                                    <hr>
+                                    <button type="submit" class="btn btn-primary btn-lg btn-block">Submit survey
+                                        values</button>
+
+                                </form>
 
                             </div>
 
                         </form>
-                        <br>
-                        <div class="text-right">
-                            <button type="submit" class="btn btn-primary btn-md" id="add-btn"><span
-                                    class="fa fa-fire"></span> Add to the Friends List</button>
-                        </div>
+
                     </div>
                 </div>
 
@@ -115,7 +110,20 @@
     </div>
 
     <script type="text/javascript">
-        // Question: What does this code do?
+
+        // Function to grab survey values and input into scores variable as an array 
+        $("#grabIt").submit(function (event) {
+            event.preventDefault();
+            var currentScore = $(".myRange")
+            console.log(currentScore)
+
+            for (let i = 0; i < currentScore.length; i++) {
+                console.log(currentScore[i].value)
+                currentScore.push(scores)
+            }
+        });
+
+        // Add a new friend on-click button
         $("#add-btn").on("click", function (event) {
             event.preventDefault();
             var newFriend = {
@@ -130,7 +138,7 @@
             //   data: newFriend
             // })
 
-            // Question: What does this code do??
+            // Add a new friend and use an alert message
             $.post("/api/friends", newFriend)
                 .then(function (data) {
                     console.log("add.html", data);

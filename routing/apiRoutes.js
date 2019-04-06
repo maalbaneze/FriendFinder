@@ -1,5 +1,5 @@
 
-var friendsData = require("../data/friendsData");
+var friendsData = require("../app/data/friends");
 
 module.exports = function (app) {
     // API GET Requests
@@ -27,13 +27,6 @@ module.exports = function (app) {
 
 
 
-
-
-
-
-
-
-
     // Displays a single character, or returns false
     app.get("/api/friends/:friend", function (req, res) {
         var chosen = req.params.friend;
@@ -54,7 +47,7 @@ module.exports = function (app) {
         // req.body hosts is equal to the JSON post sent from the user
         // This works because of our body parsing middleware
         var newfriend = req.body;
-        console.log("CHAR NAME: ", newfriend.name);
+        console.log("FRIEND NAME: ", newfriend.name);
         // Using a RegEx Pattern to remove spaces from newCharacter
         // You can read more about RegEx Patterns later https://www.regexbuddy.com/regex.html
         newfriend.routeName = newfriend.name.replace(/\s+/g, "").toLowerCase();
@@ -64,4 +57,6 @@ module.exports = function (app) {
         characters.push(newfriend);
 
         res.json(newfriend);
-    });
+    })
+
+};
