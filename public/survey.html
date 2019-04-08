@@ -19,7 +19,8 @@
             <h1>Friend Finder</h1>
             <h3>Survey Questions</h3>
             <hr>
-            <a href="/"><button class="btn btn-info btn-lg"><span class="fa fa-eye"></span> View Friends</button></a>
+            <!--<a href="/"><button class="btn btn-info btn-lg"><span class="fa fa-eye" id="viewFriends"></span> View
+                    Friends</button></a>-->
         </div>
         <div class="row">
 
@@ -112,39 +113,74 @@
     <script type="text/javascript">
 
         // Function to grab survey values and input into scores variable as an array 
-        $("#grabIt").submit(function (event) {
-            event.preventDefault();
-            var currentScore = $(".myRange")
-            console.log(currentScore)
+        var userData = {
+            name: $("#name").val(),
+            photo: $("#photo").val(),
+            scores: [
+                $("#myRange1").val(),
+                $("#myRange2").val(),
+                $("#myRange3").val(),
+                $("#myRange4").val(),
+                $("#myRange5").val(),
+                $("#myRange6").val(),
+                $("#myRange7").val(),
+                $("#myRange8").val(),
+                $("#myRange9").val(),
+                $("#myRange10").val()
+            ],
+            // $("#grabIt").submit(function (event) {
+            // event.preventDefault();
+            // var currentScore =
+            // console.log(currentScore)
 
-            for (let i = 0; i < currentScore.length; i++) {
-                console.log(currentScore[i].value)
-                currentScore.push(scores)
-            }
-        });
+            // for (let i = 0; i < currentScore.length; i++) {
+            //     console.log(currentScore[i].value)
+            //     currentScore.push(scores)
+            // }
+            // })
+        };
 
         // Add a new friend on-click button
-        $("#add-btn").on("click", function (event) {
-            event.preventDefault();
-            var newFriend = {
-                name: $("#name").val().trim(),
-                photo: $("#photo").val().trim(),
-                scores: $("#scores").val().trim(),
-            };
+        // $("#add-btn").on("click", function (event) {
+        //     event.preventDefault();
+        //     var newFriend = {
+        //         name: $("#name").val().trim(),
+        //         photo: $("#photo").val().trim(),
+        //         scores: $("#grabIt").val().trim(),
+        //     };
 
-            // $.ajax({
-            //   method: "POST",
-            //   url: '/api/friends',
-            //   data: newFriend
-            // })
+        // $.ajax({
+        //   method: "POST",
+        //   url: '/api/friends',
+        //   data: newFriend
+        // })
 
-            // Add a new friend and use an alert message
-            $.post("/api/friends", newFriend)
-                .then(function (data) {
-                    console.log("add.html", data);
-                    alert("Adding friend...");
-                });
+        // AJAX post the data to the friends API.
+        $.post("/api/friends", userData, function (data) {
+
+            // Grab the result from the AJAX post so that the best match's name and photo are displayed.
+            $("#name").text(data.name);
+            $("#photo").attr("src", data.photo);
+
+            // Show the friend with the best match
+            $("#results").function(totalDifference);
+            var user1 = name(!this);
+            var currentUser = name(this);
+            var difference = (scores(user1) - scores(currentUser));
+            var bestMatch = Math.min(difference);
+            for (let i = 0; i < difference.length; i++) {
+                return bestMatch;
+            }
+            console.log(bestMatch);
         });
+
+        // Add a new friend and use an alert message
+        $.post("/api/friends", bestMatch)
+            .then(function (data) {
+                console.log("add.html", data);
+                alert("YOUR BEST MATCH IS: " + bestMatch);
+            });
+
     </script>
 
 </body>

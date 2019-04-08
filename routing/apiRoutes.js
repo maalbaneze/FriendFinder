@@ -27,7 +27,7 @@ module.exports = function (app) {
 
 
 
-    // Displays a single character, or returns false
+    // Displays a single friend, or returns false
     app.get("/api/friends/:friend", function (req, res) {
         var chosen = req.params.friend;
 
@@ -42,7 +42,7 @@ module.exports = function (app) {
         return res.json(false);
     });
 
-    // Create New Characters - takes in JSON input
+    // Create New Friends - takes in JSON input
     app.post("/api/friends", function (req, res) {
         // req.body hosts is equal to the JSON post sent from the user
         // This works because of our body parsing middleware
