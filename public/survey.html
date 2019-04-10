@@ -94,7 +94,8 @@
                                     <h5>You like watching movies at home.</h5>
                                     <input type="range" min="1" max="5" value="" class="slider myRange" id="myRange10">
                                     <hr>
-                                    <button type="submit" class="btn btn-primary btn-lg btn-block">Submit survey
+                                    <button type="submit" class="btn btn-primary btn-lg btn-block"
+                                        id="submit-btn">Submit survey
                                         values</button>
 
                                 </form>
@@ -110,76 +111,102 @@
         </div>
     </div>
 
+    <div class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Your best match!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Friend name: </p>
+                </div>
+                <div class="modal-footer">
+                    <!--<button type="button" class="btn btn-primary">Save changes</button>-->
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close Window</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
     <script type="text/javascript">
 
         // Function to grab survey values and input into scores variable as an array 
-        var userData = {
-            name: $("#name").val(),
-            photo: $("#photo").val(),
-            scores: [
-                $("#myRange1").val(),
-                $("#myRange2").val(),
-                $("#myRange3").val(),
-                $("#myRange4").val(),
-                $("#myRange5").val(),
-                $("#myRange6").val(),
-                $("#myRange7").val(),
-                $("#myRange8").val(),
-                $("#myRange9").val(),
-                $("#myRange10").val()
-            ],
-            // $("#grabIt").submit(function (event) {
-            // event.preventDefault();
-            // var currentScore =
-            // console.log(currentScore)
+        // var userData = {
+        //     name: $("#name").val(),
+        //     photo: $("#photo").val(),
+        //     scores: [
 
-            // for (let i = 0; i < currentScore.length; i++) {
-            //     console.log(currentScore[i].value)
-            //     currentScore.push(scores)
-            // }
-            // })
-        };
+        // ],
+        // $("#grabIt").submit(function (event) {
+        // event.preventDefault();
+        // var currentScore =
+        // console.log(currentScore)
 
-        // Add a new friend on-click button
-        // $("#add-btn").on("click", function (event) {
-        //     event.preventDefault();
-        //     var newFriend = {
-        //         name: $("#name").val().trim(),
-        //         photo: $("#photo").val().trim(),
-        //         scores: $("#grabIt").val().trim(),
-        //     };
-
-        // $.ajax({
-        //   method: "POST",
-        //   url: '/api/friends',
-        //   data: newFriend
+        // for (let i = 0; i < currentScore.length; i++) {
+        //     console.log(currentScore[i].value)
+        //     currentScore.push(scores)
+        // }
         // })
+        // };
 
-        // AJAX post the data to the friends API.
-        $.post("/api/friends", userData, function (data) {
+        //Add a new friend on-click button
+        $("#submit-btn").on("click", function (event) {
+            event.preventDefault();
+            var newFriend = {
+                name: $("#name").val().trim(),
+                photo: $("#photo").val().trim(),
+                scores: [
+                    $("#myRange1").val(),
+                    $("#myRange2").val(),
+                    $("#myRange3").val(),
+                    $("#myRange4").val(),
+                    $("#myRange5").val(),
+                    $("#myRange6").val(),
+                    $("#myRange7").val(),
+                    $("#myRange8").val(),
+                    $("#myRange9").val(),
+                    $("#myRange10").val()
+                ]
+            };
 
-            // Grab the result from the AJAX post so that the best match's name and photo are displayed.
-            $("#name").text(data.name);
-            $("#photo").attr("src", data.photo);
+            $.ajax({
+                method: "POST",
+                url: '/api/friends',
+                data: newFriend
+            })
 
-            // Show the friend with the best match
-            $("#results").function(totalDifference);
-            var user1 = name(!this);
-            var currentUser = name(this);
-            var difference = (scores(user1) - scores(currentUser));
-            var bestMatch = Math.min(difference);
-            for (let i = 0; i < difference.length; i++) {
-                return bestMatch;
-            }
-            console.log(bestMatch);
-        });
+            // AJAX post the data to the friends API.
+            $.post("/api/friends", newFriend, function (data) {
 
-        // Add a new friend and use an alert message
-        $.post("/api/friends", bestMatch)
-            .then(function (data) {
-                console.log("add.html", data);
-                alert("YOUR BEST MATCH IS: " + bestMatch);
+                // Grab the result from the AJAX post so that the best match's name and photo are displayed.
+                $("#name").text(data.name);
+                $("#photo").attr("src", data.photo);
+                $()
+
+                // Show the friend with the best match
+                // $("#results").function(totalDifference);
+                // var user1 = name(!this);
+                // var currentUser = name(this);
+                // var difference = (scores(user1) - scores(currentUser));
+                // var bestMatch = Math.min(difference);
+                // for (let i = 0; i < difference.length; i++) {
+                //     return bestMatch;
+                // }
+                // console.log(bestMatch);
             });
+
+            // Add a new friend and use an alert message
+            $.post("/api/friends", bestMatch)
+                .then(function (data) {
+                    console.log("add.html", data);
+                    alert("YOUR BEST MATCH IS: " + bestMatch);
+                });
+
+        });
 
     </script>
 
